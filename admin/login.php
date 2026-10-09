@@ -64,18 +64,7 @@ if (isAdminLoggedIn()) {
           <span style="font-size: 1.1rem;">→</span>
         </button>
 
-        <div class="login-default-hint">
-          <div class="hint-header">
-            <span class="sparkle-icon">✦</span>
-            <span>Default Installation Credentials:</span>
-          </div>
-          <div class="hint-credentials">
-            Username: <code>admin</code> &nbsp;|&nbsp; Password: <code>admin123</code>
-          </div>
-          <small style="color: var(--text-dim); display: block; margin-top: 4px;">(You can change these in Admin Settings anytime)</small>
-        </div>
-
-        <div style="text-align: center; margin-top: 20px;">
+        <div style="text-align: center; margin-top: 24px;">
           <a href="../index.html" class="back-link">
             <span>← Return to Public Portfolio</span>
           </a>
