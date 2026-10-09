@@ -1,8 +1,10 @@
 # Screenshots generated during dev
 *.png
 !assets/**/*.png
+!uploads/**/*.png
 *.jpg
 !assets/**/*.jpg
+!uploads/**/*.jpg
 
 # Temporary directories
 .chrome-temp/

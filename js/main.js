@@ -255,13 +255,14 @@ function initTiltEffects() {
 }
 
 /* ==========================================================================
-   5. PROJECT FILTERING & CASE STUDY MODAL
+   5. DYNAMIC PROJECTS ENGINE & CASE STUDY MODAL
    ========================================================================== */
-const projectData = {
-  social: {
+let projectData = {
+  '1': {
     number: '01',
     title: 'SOCIAL MEDIA POSTS',
-    category: 'Branding & Creative Content',
+    category: 'social',
+    categoryLabel: 'Branding & Creative Content',
     client: 'Brands & Digital Creators',
     year: '2023 — 2026',
     role: 'Graphic Artist & Content Stylist',
@@ -276,10 +277,11 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-  apparel: {
+  '2': {
     number: '02',
     title: 'CUSTOM APPAREL',
-    category: 'Clothing & Streetwear Merch',
+    category: 'apparel',
+    categoryLabel: 'Clothing & Streetwear Merch',
     client: 'Apparel Brands & Independent Merch',
     year: '2022 — 2026',
     role: 'Apparel Graphic Artist',
@@ -294,10 +296,11 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-  digital: {
+  '3': {
     number: '03',
     title: 'DIGITAL ARTS',
-    category: 'Concept Art & Digital Illustration',
+    category: 'digital',
+    categoryLabel: 'Concept Art & Digital Illustration',
     client: 'Commissions & Creative Studios',
     year: '2021 — 2026',
     role: 'Digital Illustrator & Concept Artist',
@@ -312,10 +315,11 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-  traditional: {
+  '4': {
     number: '04',
     title: 'TRADITIONAL ARTS',
-    category: 'Drawing & Painting Studies',
+    category: 'traditional',
+    categoryLabel: 'Drawing & Painting Studies',
     client: 'Private Art Collectors & Exhibitions',
     year: '2019 — 2026',
     role: 'Traditional Fine Artist',
@@ -332,12 +336,80 @@ const projectData = {
   }
 };
 
-function initProjectsAndModal() {
-  // Filter tabs
+async function initProjectsAndModal() {
+  const grid = document.getElementById('projects-grid');
+
+  // Attempt to fetch live dynamic projects from backend API
+  try {
+    const res = await fetch('api/projects.php');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.projects) && data.projects.length > 0) {
+        projectData = {};
+        data.projects.forEach((p, idx) => {
+          const numStr = String(idx + 1).padStart(2, '0');
+          const idKey = String(p.id);
+          projectData[idKey] = {
+            id: p.id,
+            number: numStr,
+            title: p.title,
+            category: p.category,
+            categoryLabel: p.category_label || p.category,
+            client: p.client || 'Creative Client',
+            year: p.year || '2024 — 2026',
+            role: p.role || 'Artist',
+            deliverables: p.deliverables || 'Visual Artworks',
+            image: p.image,
+            description: p.description || '',
+            highlights: Array.isArray(p.highlights) ? p.highlights : [],
+            liveDemoUrl: p.live_demo_url || '#'
+          };
+        });
+      }
+    }
+  } catch (err) {
+    // Graceful offline fallback
+    console.info('Using local projects fallback data.');
+  }
+
+  // Render project cards into #projects-grid
+  if (grid) {
+    const projectKeys = Object.keys(projectData);
+    grid.innerHTML = projectKeys.map((key, idx) => {
+      const item = projectData[key];
+      const isExtra = idx >= 3 ? ' extra-project' : '';
+      const displayStyle = idx >= 3 ? 'display: none;' : '';
+      return `
+        <div class="project-card${isExtra}" data-category="${item.category}" data-project-id="${key}" style="${displayStyle}">
+          <div class="project-thumbnail-wrapper">
+            <img src="${item.image}" alt="${item.title}" class="project-thumbnail" onerror="this.src='assets/images/project_veloce.jpg'" />
+            <span class="project-badge-tag">${item.number} // ${item.category.toUpperCase()}</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <div class="project-number">${item.number}</div>
+              <div class="project-meta">
+                <h3 class="project-title">${item.title}</h3>
+                <span class="project-category">${item.categoryLabel}</span>
+              </div>
+            </div>
+            <div class="project-arrow">→</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Re-attach hover sounds
+    if (typeof playSound === 'function') {
+      grid.querySelectorAll('.project-card').forEach((c) => {
+        c.addEventListener('mouseenter', () => playSound('hover'));
+      });
+    }
+  }
+
+  // Filter tabs logic
   const filterTabs = document.querySelectorAll('.filter-tab');
   const projectCards = document.querySelectorAll('.project-card');
-
-  // Toggle View All Projects
   const toggleAllBtn = document.getElementById('toggle-all-projects');
   const viewAllText = document.getElementById('view-all-text');
   let isAllExpanded = false;
@@ -412,7 +484,7 @@ function initProjectsAndModal() {
   function openProjectModal(data) {
     if (!projectModal) return;
 
-    document.getElementById('modal-project-tag').textContent = `${data.number} // ${data.category}`;
+    document.getElementById('modal-project-tag').textContent = `${data.number} // ${data.categoryLabel || data.category}`;
     document.getElementById('modal-project-title').textContent = data.title;
     document.getElementById('modal-project-client').textContent = data.client;
     document.getElementById('modal-project-year').textContent = data.year;
@@ -423,12 +495,14 @@ function initProjectsAndModal() {
 
     const list = document.getElementById('modal-project-highlights');
     list.innerHTML = '';
-    data.highlights.forEach((hl) => {
-      const li = document.createElement('li');
-      li.textContent = hl;
-      li.style.marginBottom = '8px';
-      list.appendChild(li);
-    });
+    if (Array.isArray(data.highlights)) {
+      data.highlights.forEach((hl) => {
+        const li = document.createElement('li');
+        li.textContent = hl;
+        li.style.marginBottom = '8px';
+        list.appendChild(li);
+      });
+    }
 
     const liveBtn = document.getElementById('modal-live-btn');
     if (liveBtn) {
@@ -468,13 +542,44 @@ function initProjectsAndModal() {
     document.body.style.overflow = '';
   }
 
-  // Keydown Escape
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProjectModal();
       closeContactModal();
     }
   });
+
+  // Also dynamically load site settings (Hero text, stats counters, etc.)
+  loadDynamicSettings();
+}
+
+async function loadDynamicSettings() {
+  try {
+    const res = await fetch('api/settings.php');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.success && data.settings) {
+      const s = data.settings;
+      if (s.hero_name) {
+        const heroNameEl = document.querySelector('.hero-name');
+        if (heroNameEl) heroNameEl.innerHTML = s.hero_name.replace(' ', '<br>');
+      }
+      if (s.hero_bio) {
+        const bioEl = document.querySelector('.hero-bio');
+        if (bioEl) bioEl.textContent = s.hero_bio;
+      }
+      if (s.hero_location) {
+        const locEl = document.querySelector('.hero-worldwide-badge span');
+        if (locEl) locEl.textContent = s.hero_location;
+      }
+      if (s.availability_status) {
+        const statusEl = document.querySelector('.availability-tag span:nth-child(2)');
+        if (statusEl) statusEl.textContent = s.availability_status;
+      }
+    }
+  } catch (e) {
+    // Settings offline fallback is ok
+  }
 }
 
 /* ==========================================================================
@@ -552,6 +657,13 @@ function initContactSystem() {
       formData.forEach((value, key) => {
         payload[key] = value;
       });
+
+      // Save inquiry into Admin database
+      fetch('api/messages.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch((e) => console.warn('Database logging note:', e));
 
       try {
         const response = await fetch('https://formsubmit.co/ajax/Briantanael187@gmail.com', {
