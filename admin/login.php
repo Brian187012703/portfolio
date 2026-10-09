@@ -38,13 +38,13 @@ if (isAdminLoggedIn()) {
       <!-- Step 1: Credentials Form -->
       <form id="admin-login-form">
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">Username or Email</label>
           <div class="input-with-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" required autofocus autocomplete="username">
+            <input type="text" id="username" name="username" class="form-control" placeholder="admin or Briantanael187@gmail.com" required autofocus autocomplete="username">
           </div>
         </div>
 

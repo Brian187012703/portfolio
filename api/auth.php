@@ -34,8 +34,8 @@ if ($method === 'POST') {
             jsonResponse(['success' => false, 'error' => 'Username and password are required.'], 400);
         }
 
-        $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE username = ? LIMIT 1");
-        $stmt->execute([$username]);
+        $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?) LIMIT 1");
+        $stmt->execute([$username, $username]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password_hash'])) {
