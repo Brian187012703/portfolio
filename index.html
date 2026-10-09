@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
 
   <!-- Stylesheet (Cache-Busted for instant updates) -->
-  <link rel="stylesheet" href="css/style.css?v=2.4" />
+  <link rel="stylesheet" href="css/style.css?v=3.0" />
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
 </head>
@@ -58,7 +58,7 @@
       <div class="header-actions">
         <div class="availability-tag">
           <span class="status-dot"></span>
-          <span>Open for Projects & Freelance</span>
+          <span class="availability-text">Open for Projects & Freelance</span>
         </div>
 
         <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Sound Effects"
@@ -68,8 +68,60 @@
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
           </svg>
         </button>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-nav-backdrop"></div>
+      <div class="mobile-nav-pane">
+        <div class="mobile-nav-header">
+          <div class="role-badge">
+            <span>Brian Joshua</span>
+            <span style="color: var(--text-dim); margin: 0 2px;">/</span>
+            <span style="color: var(--accent-red);">Portfolio</span>
+          </div>
+          <button class="mobile-nav-close" aria-label="Close Navigation">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="#projects" class="mobile-nav-item">
+            <span class="nav-num">01</span>
+            <span class="nav-label">Selected Works</span>
+          </a>
+          <a href="#about" class="mobile-nav-item">
+            <span class="nav-num">02</span>
+            <span class="nav-label">Education & Skills</span>
+          </a>
+          <a href="#process" class="mobile-nav-item">
+            <span class="nav-num">03</span>
+            <span class="nav-label">Creative Process</span>
+          </a>
+          <a href="#contact" class="mobile-nav-item">
+            <span class="nav-num">04</span>
+            <span class="nav-label">Contact</span>
+          </a>
+        </div>
+        <div class="mobile-nav-actions">
+          <button class="btn-primary trigger-contact-modal" style="width: 100%; justify-content: center;">
+            <span>Start a Project</span>
+            <span>✦</span>
+          </button>
+          <div class="mobile-nav-socials">
+            <a href="https://www.facebook.com/anshalene.tanael/" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/wsy_qt/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://github.com/Brian187012703" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="admin/login.php" style="color: var(--accent-red);">Admin ⚡</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
@@ -85,7 +137,6 @@
             cutting-edge digital craftsmanship.
           </p>
 
-
           <div class="hero-cta-group">
             <a href="#projects" class="btn-primary">
               <span>Explore Works</span>
@@ -94,6 +145,10 @@
                 <polyline points="19 12 12 19 5 12"></polyline>
               </svg>
             </a>
+            <button class="btn-secondary trigger-contact-modal" type="button">
+              <span>Start a Project</span>
+              <span style="font-size: 1rem;">✦</span>
+            </button>
           </div>
         </div>
 
@@ -464,7 +519,7 @@
       <!-- Load More / See More Button -->
       <div class="load-more-container" id="load-more-wrap">
         <button id="load-more-btn" class="btn-load-more" type="button">
-          <span class="btn-text">See More Works (2)</span>
+          <span class="btn-text">See More Works (11)</span>
           <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
@@ -820,7 +875,7 @@
   <div class="toast-container"></div>
 
   <!-- Main JavaScript File (Cache-Busted) -->
-  <script src="js/main.js?v=2.4"></script>
+  <script src="js/main.js?v=3.0"></script>
 </body>
 
 </html>

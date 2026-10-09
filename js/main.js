@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 8. Back to Top Button
   initBackToTop();
+
+  // 9. Responsive Mobile Navigation Menu
+  initMobileMenu();
 });
 
 /* ==========================================================================
@@ -257,19 +260,6 @@ function initTiltEffects() {
 /* ==========================================================================
    5. DYNAMIC PROJECTS ENGINE & CASE STUDY MODAL
    ========================================================================== */
-<<<<<<< HEAD
-let projectData = {
-  '1': {
-    number: '01',
-    title: 'SOCIAL MEDIA POSTS',
-    category: 'social',
-    categoryLabel: 'Branding & Creative Content',
-    client: 'Brands & Digital Creators',
-    year: '2023 — 2026',
-    role: 'Graphic Artist & Content Stylist',
-    deliverables: 'Social Media Banners, Story Creatives, Promo Ads, Visual Guides',
-    image: 'assets/images/project_veloce.jpg',
-=======
 const projectData = {
   'nba-next': {
     number: '01',
@@ -280,7 +270,6 @@ const projectData = {
     role: 'Digital Concept Artist & Retoucher',
     deliverables: 'Cinematic Sports Poster, High-Res Composite, Social Promo Artwork',
     image: 'assets/images/digital_nba_next.jpg',
->>>>>>> origin/main
     description:
       'A powerful, cinematic sports concept poster spotlighting top basketball prodigies Kon Knueppel and Cooper Flagg standing atop mountain peaks looking towards the glowing Kia NBA Rookie of the Year trophy at sunrise. Crafted with atmospheric lighting, golden cloud depth, and bold editorial typography.',
     highlights: [
@@ -290,18 +279,6 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-<<<<<<< HEAD
-  '2': {
-    number: '02',
-    title: 'CUSTOM APPAREL',
-    category: 'apparel',
-    categoryLabel: 'Clothing & Streetwear Merch',
-    client: 'Apparel Brands & Independent Merch',
-    year: '2022 — 2026',
-    role: 'Apparel Graphic Artist',
-    deliverables: 'Vector T-Shirt Graphics, Streetwear Typography, Silk Screen Separations',
-    image: 'assets/images/project_woodcraft.jpg',
-=======
   'alex-eala': {
     number: '02',
     title: 'ALEX EALA: THE FACE OF THE PHILIPPINES',
@@ -311,7 +288,6 @@ const projectData = {
     role: 'Digital Artist & Creative Retoucher',
     deliverables: 'Editorial Portrait Poster, Cultural Art Tribute, High-Detail Matte Painting',
     image: 'assets/images/digital_alex_eala.jpg',
->>>>>>> origin/main
     description:
       'A majestic tribute celebrating tennis sensation Alex Eala as an ambassador of Philippine pride. Blends traditional Filipino heritage with elite sports athleticism, depicting Alex holding the Philippine national flag in an elegant Filipiniana gown across an endless golden wheat field at twilight.',
     highlights: [
@@ -321,18 +297,6 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-<<<<<<< HEAD
-  '3': {
-    number: '03',
-    title: 'DIGITAL ARTS',
-    category: 'digital',
-    categoryLabel: 'Concept Art & Digital Illustration',
-    client: 'Commissions & Creative Studios',
-    year: '2021 — 2026',
-    role: 'Digital Illustrator & Concept Artist',
-    deliverables: 'High-Res Digital Paintings, Character Designs, Concept Artworks',
-    image: 'assets/images/project_urbanic.jpg',
-=======
   'post-malone': {
     number: '03',
     title: 'POST MALONE: AUSTIN POST TRIBUTE',
@@ -342,7 +306,6 @@ const projectData = {
     role: 'Graphic Stylist & Photo Manipulator',
     deliverables: 'Fiery Tour Poster, Monochromatic Screen Print Art, High-Impact Album Creative',
     image: 'assets/images/digital_post_malone.jpg',
->>>>>>> origin/main
     description:
       'An explosive, fiery monochromatic concert montage celebrating global music icon Post Malone. Features layered high-energy live performance captures, detailed facial expressions, body tattoos, blazing flame textures, and custom signature typography.',
     highlights: [
@@ -352,18 +315,6 @@ const projectData = {
     ],
     liveDemoUrl: '#'
   },
-<<<<<<< HEAD
-  '4': {
-    number: '04',
-    title: 'TRADITIONAL ARTS',
-    category: 'traditional',
-    categoryLabel: 'Drawing & Painting Studies',
-    client: 'Private Art Collectors & Exhibitions',
-    year: '2019 — 2026',
-    role: 'Traditional Fine Artist',
-    deliverables: 'Graphite Drawings, Ink Sketches, Canvas Paintings, Mixed Media',
-    image: 'assets/images/project_neural.jpg',
-=======
   'lewis-hamilton': {
     number: '04',
     title: 'LEWIS HAMILTON: FORMULA 1 CHAMPION',
@@ -373,7 +324,7 @@ const projectData = {
     role: 'Motorsport Graphic Designer',
     deliverables: 'F1 Grand Prix Poster, Race Winner Commemorative Art, High-Detail Car Composite',
     image: 'assets/images/digital_lewis_hamilton.jpg',
->>>>>>> origin/main
+
     description:
       'A gritty, high-contrast tribute celebrating 7-time Formula 1 World Champion Sir Lewis Hamilton. Combines neon purple chromatic helmet reflections, emotional championship victory moments, British flag elements, and the iconic Mercedes-AMG Petronas F1 race car.',
     highlights: [
@@ -646,22 +597,23 @@ function initProjectsAndModal() {
       }
     });
 
+    const INITIAL_COUNT = 6;
     const totalMatching = matchingCards.length;
-    const hasMore = totalMatching > 3;
-    const extraCount = totalMatching - 3;
+    const hasMore = totalMatching > INITIAL_COUNT;
+    const extraCount = totalMatching - INITIAL_COUNT;
 
-    // 2. Control visibility (top 3 by default or all if expanded)
+    // 2. Control visibility (top 6 by default or all if expanded)
     matchingCards.forEach((card, index) => {
-      if (index < 3 || isAllExpanded) {
+      if (index < INITIAL_COUNT || isAllExpanded) {
         card.style.display = 'flex';
-        setTimeout(() => (card.style.opacity = '1'), 30);
+        card.style.opacity = '1';
       } else {
         card.style.opacity = '0';
-        setTimeout(() => (card.style.display = 'none'), 150);
+        card.style.display = 'none';
       }
     });
 
-    // 3. Show or hide Load More button based on whether there are > 3 projects in this category
+    // 3. Show or hide Load More button based on whether there are > 6 projects in this category
     if (hasMore) {
       if (loadMoreWrap) loadMoreWrap.style.display = 'flex';
 
@@ -669,14 +621,14 @@ function initProjectsAndModal() {
         const btnText = loadMoreBtn.querySelector('.btn-text');
         if (isAllExpanded) {
           loadMoreBtn.classList.add('expanded');
-          if (btnText) btnText.textContent = 'Show Top 3 Only';
+          if (btnText) btnText.textContent = `Show Top ${INITIAL_COUNT} Only`;
         } else {
           loadMoreBtn.classList.remove('expanded');
           if (btnText) btnText.textContent = `See More Works (${extraCount})`;
         }
       }
     } else {
-      // 3 or fewer projects: hide the "See More" button
+      // 6 or fewer projects: hide the "See More" button
       if (loadMoreWrap) loadMoreWrap.style.display = 'none';
     }
   }
@@ -1139,3 +1091,64 @@ function initBackToTop() {
     });
   }
 }
+
+/* ==========================================================================
+   9. RESPONSIVE MOBILE NAVIGATION DRAWER
+   ========================================================================== */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  if (!toggleBtn || !drawer) return;
+
+  const closeBtn = drawer.querySelector('.mobile-nav-close');
+  const backdrop = drawer.querySelector('.mobile-nav-backdrop');
+
+  function openMenu() {
+    playSound('click');
+    drawer.classList.add('active');
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    playSound('click');
+    drawer.classList.remove('active');
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (drawer.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeMenu);
+  }
+
+  // Close when tapping any navigation link inside the drawer
+  const links = drawer.querySelectorAll('.mobile-nav-item, .trigger-contact-modal');
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+}
+

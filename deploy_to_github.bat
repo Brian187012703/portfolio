@@ -11,6 +11,17 @@ set /p REPO_NAME="Enter your repo name (default: Brian187012703.github.io): "
 if "%REPO_NAME%"=="" set REPO_NAME=Brian187012703.github.io
 
 echo.
+echo.
+if not exist .git (
+  echo Initializing local git repository...
+  git init
+)
+
+echo Staging all updated files...
+git add .
+git commit -m "Fix button functionality, resolve git conflicts, and implement full multi-device responsiveness"
+
+echo.
 echo Setting remote origin to: https://github.com/Brian187012703/%REPO_NAME%.git
 git remote remove origin 2>nul
 git remote add origin https://github.com/Brian187012703/%REPO_NAME%.git
