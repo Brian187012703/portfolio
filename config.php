@@ -33,8 +33,13 @@ define('UPLOAD_URL', 'uploads/');
 // Default Admin Credentials (auto-seeded into database on first run)
 define('DEFAULT_ADMIN_USER', 'admin');
 define('DEFAULT_ADMIN_PASS', 'admin123');
-define('DEFAULT_ADMIN_EMAIL', 'Briantanael187@gmail.com');
+define('DEFAULT_ADMIN_EMAIL', 'briantanael187@gmail.com');
+
+// 2-Factor Authentication (OTP via Email)
+define('ENABLE_LOGIN_OTP', true);
+define('ADMIN_OTP_EMAIL', 'briantanael187@gmail.com');
 
 // Site metadata
 define('SITE_NAME', 'Brian Joshua Tanael — Portfolio');
 define('ADMIN_TITLE', 'Brian Joshua Portfolio — Admin Control');
+

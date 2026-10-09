@@ -5,6 +5,7 @@
 
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth_helper.php';
+require_once __DIR__ . '/../includes/mailer.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -38,23 +39,128 @@ if ($method === 'POST') {
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password_hash'])) {
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['admin_id'] = $user['id'];
-            $_SESSION['admin_user'] = $user['username'];
-            $_SESSION['admin_email'] = $user['email'];
+            $otpEmail = ADMIN_OTP_EMAIL ?: $user['email'];
 
-            jsonResponse([
-                'success' => true,
-                'message' => 'Login successful',
-                'user' => [
-                    'id' => $user['id'],
+            if (defined('ENABLE_LOGIN_OTP') && ENABLE_LOGIN_OTP) {
+                // Generate 6-digit OTP
+                $otpCode = str_pad(strval(random_int(100000, 999999)), 6, '0', STR_PAD_LEFT);
+
+                $_SESSION['pending_otp'] = [
+                    'code' => $otpCode,
+                    'expires' => time() + 600, // 10 minutes
+                    'user_id' => $user['id'],
                     'username' => $user['username'],
-                    'email' => $user['email']
-                ]
-            ]);
+                    'email' => $otpEmail,
+                    'attempts' => 0,
+                    'sent_at' => time()
+                ];
+
+                // Send OTP email
+                sendAdminLoginOtp($otpCode, $otpEmail);
+
+                // Mask email for security display (e.g., br***@gmail.com)
+                $parts = explode('@', $otpEmail);
+                $maskedName = substr($parts[0], 0, 2) . str_repeat('*', max(3, strlen($parts[0]) - 2));
+                $maskedEmail = $maskedName . '@' . ($parts[1] ?? 'gmail.com');
+
+                jsonResponse([
+                    'success' => true,
+                    'require_otp' => true,
+                    'email' => $maskedEmail,
+                    'full_email' => $otpEmail,
+                    'message' => "Verification code dispatched to {$maskedEmail}."
+                ]);
+            } else {
+                // Direct login without OTP
+                $_SESSION['admin_logged_in'] = true;
+                $_SESSION['admin_id'] = $user['id'];
+                $_SESSION['admin_user'] = $user['username'];
+                $_SESSION['admin_email'] = $user['email'];
+
+                jsonResponse([
+                    'success' => true,
+                    'require_otp' => false,
+                    'message' => 'Login successful',
+                    'user' => [
+                        'id' => $user['id'],
+                        'username' => $user['username'],
+                        'email' => $user['email']
+                    ]
+                ]);
+            }
         } else {
             jsonResponse(['success' => false, 'error' => 'Invalid username or password.'], 401);
         }
+    }
+
+    if ($postAction === 'verify_otp') {
+        $enteredOtp = trim($input['otp'] ?? '');
+
+        if (empty($_SESSION['pending_otp'])) {
+            jsonResponse(['success' => false, 'error' => 'No active login session. Please sign in again.'], 400);
+        }
+
+        $sessionOtp = $_SESSION['pending_otp'];
+
+        if (time() > $sessionOtp['expires']) {
+            unset($_SESSION['pending_otp']);
+            jsonResponse(['success' => false, 'error' => 'Verification code has expired. Please sign in again.'], 400);
+        }
+
+        if ($sessionOtp['attempts'] >= 5) {
+            unset($_SESSION['pending_otp']);
+            jsonResponse(['success' => false, 'error' => 'Too many failed attempts. Please sign in again.'], 400);
+        }
+
+        $_SESSION['pending_otp']['attempts']++;
+
+        if ($enteredOtp === $sessionOtp['code']) {
+            // OTP is valid! Finalize login
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_id'] = $sessionOtp['user_id'];
+            $_SESSION['admin_user'] = $sessionOtp['username'];
+            $_SESSION['admin_email'] = $sessionOtp['email'];
+            unset($_SESSION['pending_otp']);
+
+            jsonResponse([
+                'success' => true,
+                'message' => 'Verification successful! Welcome back.',
+                'user' => [
+                    'username' => $_SESSION['admin_user'],
+                    'email' => $_SESSION['admin_email']
+                ]
+            ]);
+        } else {
+            $remaining = 5 - $_SESSION['pending_otp']['attempts'];
+            jsonResponse([
+                'success' => false,
+                'error' => "Invalid code. {$remaining} attempts remaining."
+            ], 400);
+        }
+    }
+
+    if ($postAction === 'resend_otp') {
+        if (empty($_SESSION['pending_otp'])) {
+            jsonResponse(['success' => false, 'error' => 'No pending login found. Please sign in again.'], 400);
+        }
+
+        $lastSent = $_SESSION['pending_otp']['sent_at'] ?? 0;
+        if (time() - $lastSent < 30) {
+            $waitSeconds = 30 - (time() - $lastSent);
+            jsonResponse(['success' => false, 'error' => "Please wait {$waitSeconds} seconds before requesting a new code."], 429);
+        }
+
+        $newOtp = str_pad(strval(random_int(100000, 999999)), 6, '0', STR_PAD_LEFT);
+        $_SESSION['pending_otp']['code'] = $newOtp;
+        $_SESSION['pending_otp']['expires'] = time() + 600;
+        $_SESSION['pending_otp']['sent_at'] = time();
+
+        sendAdminLoginOtp($newOtp, $_SESSION['pending_otp']['email']);
+
+        jsonResponse([
+            'success' => true,
+            'message' => 'A fresh verification code has been dispatched to your email!'
+        ]);
     }
 
     if ($postAction === 'logout') {
