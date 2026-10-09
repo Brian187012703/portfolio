@@ -160,8 +160,19 @@ if (isAdminLoggedIn()) {
             stepTitle.textContent = 'ENTER OTP';
             stepSubtitle.innerHTML = `A 6-digit verification code has been dispatched to <strong style="color: var(--admin-accent);">${data.full_email || data.email}</strong>.`;
 
+            let devNotice = '';
+            if (data.dev_otp) {
+              devNotice = `
+                <div style="margin-top: 10px; padding: 12px; background: rgba(0,0,0,0.5); border-radius: 6px; border: 1px dashed var(--admin-accent); text-align: center;">
+                  <div style="font-size: 0.72rem; color: var(--admin-text-muted); text-transform: uppercase; font-family: var(--font-mono);">Local Development Testing Code:</div>
+                  <div style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 6px; font-family: var(--font-mono); margin: 6px 0;">${data.dev_otp}</div>
+                  <div style="font-size: 0.72rem; color: var(--admin-text-secondary);">(Dispatched to briantanael187@gmail.com. Automatically hidden in production)</div>
+                </div>
+              `;
+            }
+
             alertBox.className = 'admin-alert alert-info';
-            alertBox.innerHTML = `✓ Verification code sent to <strong>${data.full_email || data.email}</strong>. Please check your Gmail.`;
+            alertBox.innerHTML = `✓ Verification code dispatched to <strong>${data.full_email || data.email}</strong>.${devNotice}`;
             alertBox.style.display = 'block';
 
             startResendTimer(30);
@@ -262,8 +273,19 @@ if (isAdminLoggedIn()) {
         const data = await res.json();
 
         if (res.ok && data.success) {
+          let devNotice = '';
+          if (data.dev_otp) {
+            devNotice = `
+              <div style="margin-top: 10px; padding: 12px; background: rgba(0,0,0,0.5); border-radius: 6px; border: 1px dashed var(--admin-accent); text-align: center;">
+                <div style="font-size: 0.72rem; color: var(--admin-text-muted); text-transform: uppercase; font-family: var(--font-mono);">Local Development Testing Code:</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 6px; font-family: var(--font-mono); margin: 6px 0;">${data.dev_otp}</div>
+                <div style="font-size: 0.72rem; color: var(--admin-text-secondary);">(Dispatched to briantanael187@gmail.com. Automatically hidden in production)</div>
+              </div>
+            `;
+          }
+
           alertBox.className = 'admin-alert alert-info';
-          alertBox.textContent = '✓ A new verification code has been dispatched to your email.';
+          alertBox.innerHTML = `✓ A fresh verification code has been dispatched to your email.${devNotice}`;
           alertBox.style.display = 'block';
           startResendTimer(30);
         } else {

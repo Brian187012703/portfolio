@@ -6,10 +6,58 @@
 
 require_once __DIR__ . '/../config.php';
 
-function sendAdminLoginOtp(string $otpCode, string $recipientEmail = 'briantanael187@gmail.com'): bool {
+function sendAdminLoginOtp(string $otpCode, string $recipientEmail = 'briantanael187@gmail.com'): array {
     $subject = "🔐 Your Admin Verification Code: {$otpCode} — Brian Joshua Portfolio";
 
-    // Clean Cyberpunk / High-end HTML Email
+    // 1. Dispatch via FormSubmit API (Provides live Gmail delivery even without local SMTP server)
+    $formSubmitSuccess = false;
+    $formSubmitMessage = '';
+
+    try {
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+        $host = $_SERVER['HTTP_HOST'] ?? ($_SERVER['SERVER_NAME'] ?? 'localhost');
+        $origin = $protocol . $host;
+        $referer = $origin . ($_SERVER['REQUEST_URI'] ?? '/portfolio/admin/login.php');
+
+        $payload = [
+            '_subject' => "🔐 Admin Verification Code: {$otpCode} — Brian Joshua Portfolio",
+            'VERIFICATION_CODE' => $otpCode,
+            'STATUS' => 'Valid for 10 minutes',
+            'SYSTEM' => 'Brian Joshua Portfolio — 2-Factor Authentication',
+            'ACCOUNT' => 'Administrator',
+            'RECIPIENT' => $recipientEmail,
+            '_captcha' => 'false'
+        ];
+
+        $ch = curl_init('https://formsubmit.co/ajax/' . urlencode($recipientEmail));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Accept: application/json',
+            'Origin: ' . $origin,
+            'Referer: ' . $referer,
+            'User-Agent: Mozilla/5.0 (Portfolio-Security/2.0)'
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 6);
+        $resp = curl_exec($ch);
+        $curlErr = curl_error($ch);
+        curl_close($ch);
+
+        if ($resp) {
+            $json = json_decode($resp, true);
+            if (isset($json['success']) && ($json['success'] === 'true' || $json['success'] === true)) {
+                $formSubmitSuccess = true;
+            } elseif (isset($json['message']) && stripos($json['message'], 'activation') !== false) {
+                $formSubmitMessage = 'Activation email sent to Gmail by FormSubmit';
+            }
+        }
+    } catch (Exception $e) {
+        // Fall through to native mail
+    }
+
+    // 2. Dispatch via native PHP mail() (Works out-of-the-box on HostForge / cPanel / Linux Apache)
     $htmlBody = "
     <!DOCTYPE html>
     <html>
@@ -38,7 +86,7 @@ function sendAdminLoginOtp(string $otpCode, string $recipientEmail = 'briantanae
           <div class='expiry'>⏱ Valid for the next 10 minutes</div>
         </div>
         
-        <p class='desc' style='font-size: 13px;'>If you did not request this code, your credentials may be compromised. Please sign in and update your password immediately.</p>
+        <p class='desc' style='font-size: 13px;'>If you did not request this code, please update your password immediately.</p>
         
         <div class='footer'>
           © " . date('Y') . " Brian Joshua Tanael — Portfolio Security System<br>
@@ -49,24 +97,28 @@ function sendAdminLoginOtp(string $otpCode, string $recipientEmail = 'briantanae
     </html>
     ";
 
-    $host = $_SERVER['SERVER_NAME'] ?? 'portfolio.local';
     $headers = [
         'MIME-Version: 1.0',
         'Content-Type: text/html; charset=UTF-8',
-        'From: Brian Joshua Portfolio Security <no-reply@' . $host . '>',
+        'From: Brian Joshua Portfolio Security <no-reply@' . ($_SERVER['SERVER_NAME'] ?? 'portfolio.local') . '>',
         'Reply-To: ' . $recipientEmail,
         'X-Priority: 1 (Highest)',
         'X-Mailer: PHP/' . phpversion()
     ];
 
-    // Attempt PHP mail()
-    $sent = @mail($recipientEmail, $subject, $htmlBody, implode("\r\n", $headers));
+    $phpMailSuccess = @mail($recipientEmail, $subject, $htmlBody, implode("\r\n", $headers));
 
-    // Save latest OTP to local log for dev convenience / backup
+    // 3. Save latest OTP to local file for backup and local development reference
     $logDir = __DIR__ . '/../data';
-    if (is_dir($logDir) || @mkdir($logDir, 0755, true)) {
-        @file_put_contents($logDir . '/latest_otp.txt', "Time: " . date('Y-m-d H:i:s') . "\nCode: {$otpCode}\nRecipient: {$recipientEmail}\nMail sent status: " . ($sent ? 'Yes' : 'No') . "\n");
+    if (!is_dir($logDir)) {
+        @mkdir($logDir, 0755, true);
     }
+    @file_put_contents($logDir . '/latest_otp.txt', "Time: " . date('Y-m-d H:i:s') . "\nCode: {$otpCode}\nRecipient: {$recipientEmail}\nFormSubmit: " . ($formSubmitSuccess ? 'Delivered' : ($formSubmitMessage ?: 'Attempted')) . "\nPHP Mail: " . ($phpMailSuccess ? 'Sent' : 'Offline/Not configured on localhost') . "\n");
 
-    return $sent;
+    return [
+        'success' => $formSubmitSuccess || $phpMailSuccess,
+        'formsubmit' => $formSubmitSuccess,
+        'php_mail' => $phpMailSuccess,
+        'note' => $formSubmitMessage
+    ];
 }

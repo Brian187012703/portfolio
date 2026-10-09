@@ -56,20 +56,26 @@ if ($method === 'POST') {
                 ];
 
                 // Send OTP email
-                sendAdminLoginOtp($otpCode, $otpEmail);
+                $mailStatus = sendAdminLoginOtp($otpCode, $otpEmail);
 
                 // Mask email for security display (e.g., br***@gmail.com)
                 $parts = explode('@', $otpEmail);
                 $maskedName = substr($parts[0], 0, 2) . str_repeat('*', max(3, strlen($parts[0]) - 2));
                 $maskedEmail = $maskedName . '@' . ($parts[1] ?? 'gmail.com');
 
-                jsonResponse([
+                $resPayload = [
                     'success' => true,
                     'require_otp' => true,
                     'email' => $maskedEmail,
                     'full_email' => $otpEmail,
-                    'message' => "Verification code dispatched to {$maskedEmail}."
-                ]);
+                    'message' => "Verification code dispatched to {$otpEmail}."
+                ];
+
+                if (!empty($GLOBALS['isLocal']) || (isset($isLocal) && $isLocal)) {
+                    $resPayload['dev_otp'] = $otpCode;
+                }
+
+                jsonResponse($resPayload);
             } else {
                 // Direct login without OTP
                 $_SESSION['admin_logged_in'] = true;
@@ -157,10 +163,15 @@ if ($method === 'POST') {
 
         sendAdminLoginOtp($newOtp, $_SESSION['pending_otp']['email']);
 
-        jsonResponse([
+        $resPayload = [
             'success' => true,
             'message' => 'A fresh verification code has been dispatched to your email!'
-        ]);
+        ];
+        if (!empty($GLOBALS['isLocal']) || (isset($isLocal) && $isLocal)) {
+            $resPayload['dev_otp'] = $newOtp;
+        }
+
+        jsonResponse($resPayload);
     }
 
     if ($postAction === 'logout') {
