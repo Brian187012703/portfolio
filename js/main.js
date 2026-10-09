@@ -257,6 +257,7 @@ function initTiltEffects() {
 /* ==========================================================================
    5. DYNAMIC PROJECTS ENGINE & CASE STUDY MODAL
    ========================================================================== */
+<<<<<<< HEAD
 let projectData = {
   '1': {
     number: '01',
@@ -268,15 +269,28 @@ let projectData = {
     role: 'Graphic Artist & Content Stylist',
     deliverables: 'Social Media Banners, Story Creatives, Promo Ads, Visual Guides',
     image: 'assets/images/project_veloce.jpg',
+=======
+const projectData = {
+  'nba-next': {
+    number: '01',
+    title: "WHO'S GONNA BE NEXT?",
+    category: 'Digital Art / Sports Poster',
+    client: 'Concept Sports Poster Showcase',
+    year: '2024 — 2026',
+    role: 'Digital Concept Artist & Retoucher',
+    deliverables: 'Cinematic Sports Poster, High-Res Composite, Social Promo Artwork',
+    image: 'assets/images/digital_nba_next.jpg',
+>>>>>>> origin/main
     description:
-      'A collection of high-converting, attention-grabbing social media graphics crafted for viral reach and modern brand aesthetics. Built with high-contrast typography, color grading, and dynamic visual layouts across Instagram, Facebook, and promotional campaigns.',
+      'A powerful, cinematic sports concept poster spotlighting top basketball prodigies Kon Knueppel and Cooper Flagg standing atop mountain peaks looking towards the glowing Kia NBA Rookie of the Year trophy at sunrise. Crafted with atmospheric lighting, golden cloud depth, and bold editorial typography.',
     highlights: [
-      'Engineered bold visual hierarchy tailored for scroll-stopping engagement on modern feeds.',
-      'Utilized Photoshop, CorelDRAW, and Canva for versatile, fast-turnaround campaign packages.',
-      'Created unified visual identity systems for multi-platform marketing launches.'
+      'Designed realistic sunset lighting angles matching player cutout highlights.',
+      'Created custom glass refraction and glowing radiance for the NBA Rookie trophy centerpiece.',
+      'Authored with high-contrast typography and dynamic sports poster composition.'
     ],
     liveDemoUrl: '#'
   },
+<<<<<<< HEAD
   '2': {
     number: '02',
     title: 'CUSTOM APPAREL',
@@ -287,15 +301,27 @@ let projectData = {
     role: 'Apparel Graphic Artist',
     deliverables: 'Vector T-Shirt Graphics, Streetwear Typography, Silk Screen Separations',
     image: 'assets/images/project_woodcraft.jpg',
+=======
+  'alex-eala': {
+    number: '02',
+    title: 'ALEX EALA: THE FACE OF THE PHILIPPINES',
+    category: 'Digital Art / Cultural Sports Tribute',
+    client: 'Filipino Pride Artwork Series',
+    year: '2024 — 2026',
+    role: 'Digital Artist & Creative Retoucher',
+    deliverables: 'Editorial Portrait Poster, Cultural Art Tribute, High-Detail Matte Painting',
+    image: 'assets/images/digital_alex_eala.jpg',
+>>>>>>> origin/main
     description:
-      'Custom graphic designs engineered specifically for apparel production, streetwear brands, and event merchandise. Focused on intricate line art, typography composition, and color-separated vector files ready for screen printing and direct-to-garment (DTG) execution.',
+      'A majestic tribute celebrating tennis sensation Alex Eala as an ambassador of Philippine pride. Blends traditional Filipino heritage with elite sports athleticism, depicting Alex holding the Philippine national flag in an elegant Filipiniana gown across an endless golden wheat field at twilight.',
     highlights: [
-      'Mastery in vector separation, print specifications, and garment mockups.',
-      'Delivered over 100+ unique shirt and hoodie designs for streetwear brands and client collections.',
-      'Blends hand-drawn traditional character art with futuristic cyber-grunge typography.'
+      'Complex blending of fabric texture, golden hour ambiance, and realistic wind physics on the Philippine flag.',
+      'Seamless digital composite of traditional Filipiniana dress and modern tennis racket equipment.',
+      'Evocative atmospheric depth with soft cloud horizons and soaring birds.'
     ],
     liveDemoUrl: '#'
   },
+<<<<<<< HEAD
   '3': {
     number: '03',
     title: 'DIGITAL ARTS',
@@ -306,15 +332,27 @@ let projectData = {
     role: 'Digital Illustrator & Concept Artist',
     deliverables: 'High-Res Digital Paintings, Character Designs, Concept Artworks',
     image: 'assets/images/project_urbanic.jpg',
+=======
+  'post-malone': {
+    number: '03',
+    title: 'POST MALONE: AUSTIN POST TRIBUTE',
+    category: 'Digital Art / Pop Culture Montage',
+    client: 'Music & Concert Series Artwork',
+    year: '2024 — 2026',
+    role: 'Graphic Stylist & Photo Manipulator',
+    deliverables: 'Fiery Tour Poster, Monochromatic Screen Print Art, High-Impact Album Creative',
+    image: 'assets/images/digital_post_malone.jpg',
+>>>>>>> origin/main
     description:
-      'Expansive digital art creations combining painterly brushwork with contemporary sci-fi and illustrative character art. Each piece balances dramatic rim lighting, anatomy precision, and atmospheric world-building.',
+      'An explosive, fiery monochromatic concert montage celebrating global music icon Post Malone. Features layered high-energy live performance captures, detailed facial expressions, body tattoos, blazing flame textures, and custom signature typography.',
     highlights: [
-      'Created utilizing Adobe Photoshop, graphic tablets, and AI-assisted workflows.',
-      'Rich cinematic color palettes with high-depth contrast and rendering.',
-      'Versatile styles ranging from anime/manga to hyper-stylized digital realism.'
+      'Multi-layered composite with seamless transition between live performance poses.',
+      'Intense fiery color grade with burning embers, dust grains, and radiant fire highlights.',
+      'Precision masking of facial features, beard details, and intricate body ink.'
     ],
     liveDemoUrl: '#'
   },
+<<<<<<< HEAD
   '4': {
     number: '04',
     title: 'TRADITIONAL ARTS',
@@ -325,115 +363,337 @@ let projectData = {
     role: 'Traditional Fine Artist',
     deliverables: 'Graphite Drawings, Ink Sketches, Canvas Paintings, Mixed Media',
     image: 'assets/images/project_neural.jpg',
+=======
+  'lewis-hamilton': {
+    number: '04',
+    title: 'LEWIS HAMILTON: FORMULA 1 CHAMPION',
+    category: 'Digital Art / Motorsport Artwork',
+    client: 'F1 Tribute & Racing Graphics',
+    year: '2024 — 2026',
+    role: 'Motorsport Graphic Designer',
+    deliverables: 'F1 Grand Prix Poster, Race Winner Commemorative Art, High-Detail Car Composite',
+    image: 'assets/images/digital_lewis_hamilton.jpg',
+>>>>>>> origin/main
     description:
-      'Foundational traditional artworks rooted in classic drawing techniques, portraiture, ink hatching, and vibrant painting mediums. Demonstrates deep understanding of anatomy, lighting, values, and organic textures that elevate digital work.',
+      'A gritty, high-contrast tribute celebrating 7-time Formula 1 World Champion Sir Lewis Hamilton. Combines neon purple chromatic helmet reflections, emotional championship victory moments, British flag elements, and the iconic Mercedes-AMG Petronas F1 race car.',
     highlights: [
-      'Specialized in charcoal, graphite realism, acrylic, and watercolor media.',
-      'Over 5+ years of dedicated traditional sketchbooks and portfolio studies.',
-      'Forms the irreplaceable organic foundation behind all digital and apparel works.'
+      'Vibrant cyber-neon lighting reflections mapped accurately across the racing helmet visor.',
+      'High-dynamic range composite integrating the F1 race car in motion with victorious athlete portraits.',
+      'Textured halftone grit and Formula 1 typography layout.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'brigida-friends': {
+    number: '05',
+    title: 'BRIGIDA & FRIENDS: MEADOW ADVENTURE',
+    category: 'Digital Art / 3D Cartoon Composite',
+    client: 'Creative Character & Photo Artwork',
+    year: '2024 — 2026',
+    role: 'Digital Illustrator & 3D Compositor',
+    deliverables: 'Stylized Character Composite, Custom 3D Logo Typography, Whimsical Scene Art',
+    image: 'assets/images/digital_brigida_minions.jpg',
+    description:
+      'A vibrant, playful photo composite merging real-life selfie perspective photography with animated 3D Minions characters, floating butterflies, a peeled banana foreground, and custom yellow 3D title lettering nestled in an expansive blooming green meadow.',
+    highlights: [
+      'Perspective matching between real-world foreground selfie arm and 3D character scale.',
+      'Custom 3D extrusion and sunny lighting simulation on "BRIGIDA and Friends" logo.',
+      'Vivid color treatment bringing out lush meadow greens, sunny skies, and playful yellow accents.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'trad-lily-portrait': {
+    number: '06',
+    title: 'LILY IN BLOOM',
+    category: 'Traditional Art / Graphite & Pencil Portrait',
+    client: 'Original Sketchbook & Portfolio Study',
+    year: '2023 — 2026',
+    role: 'Traditional Fine Artist',
+    deliverables: 'Graphite on Textured Paper, Botanical Illustration, Character Study',
+    image: 'assets/images/traditional_lily_portrait.jpg',
+    description:
+      'An evocative graphite portrait executed on cold-press textured drawing paper depicting an elegant stylized muse adorned with delicate blooming lilies in her hair and cascading across the foreground. Signed "TANAEL" by the artist.',
+    highlights: [
+      'Rendered with varying graphite pencil grades (2B to 8B) for rich velvet black tones and soft skin highlights.',
+      'Detailed botanical study of lily petal veins and organic folds.',
+      'Mastery of expressive facial anatomy, delicate eyelash work, and fine hair strand details.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'trad-female-study': {
+    number: '07',
+    title: 'REALISM PORTRAIT STUDY',
+    category: 'Traditional Art / Charcoal & Graphite Drawing',
+    client: 'Anatomy & Form Master Study',
+    year: '2023 — 2026',
+    role: 'Traditional Fine Artist',
+    deliverables: 'Charcoal Shading Study, Blending & Smudge Technique, Kasimir Pencil Art',
+    image: 'assets/images/traditional_female_study.jpg',
+    description:
+      'A masterclass in soft tonal gradients and charcoal blending, capturing the delicate planes of the human face, collarbone, and gaze. Crafted with professional Kasimir graphite and charcoal pencils.',
+    highlights: [
+      'Subtle charcoal blending using blending stumps and soft tissue to achieve smooth skin transitions.',
+      'High-precision eye and lip rendering with lifelike specular light reflection.',
+      'Demonstrates deep traditional understanding of three-dimensional form and diffuse lighting.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'trad-jordan-sneaker': {
+    number: '08',
+    title: 'AIR JORDAN 1 HIGH RETRO',
+    category: 'Traditional Art / Sneaker & Product Illustration',
+    client: 'Streetwear & Sneaker Culture Study',
+    year: '2023 — 2026',
+    role: 'Traditional Fine Artist',
+    deliverables: 'Charcoal Sneaker Illustration, Leather Texture Study, Tone Precision Art',
+    image: 'assets/images/traditional_jordan_sneaker.jpg',
+    description:
+      'An impeccably rendered charcoal and graphite study of the legendary Air Jordan 1 High retro silhouette. Accurately details leather panel grain, stitch perforations on the toe box, lace tension, and rubber midsole contours.',
+    highlights: [
+      'Deep matte black charcoal application contrasting against crisp white negative paper space.',
+      'Intricate leather texture replication and micro-stitch detailing along sneaker panels.',
+      'Created with Faber-Castell Pitt Charcoal pencils and fine detail blending tools.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'trad-masked-portrait': {
+    number: '09',
+    title: 'SILHOUETTE & SHADOW',
+    category: 'Traditional Art / Charcoal Stippling & Shading',
+    client: 'Urban Aesthetic Study',
+    year: '2023 — 2026',
+    role: 'Traditional Fine Artist',
+    deliverables: 'Textured Paper Charcoal Art, Urban Streetwear Portrait, High-Contrast Study',
+    image: 'assets/images/traditional_masked_portrait.jpg',
+    description:
+      'A contemporary urban portrait rendered with intense charcoal blacks on heavy textured paper. Showcases a youth in spectacles and mask under dramatic overhead lighting casting deep shadows.',
+    highlights: [
+      'Heavy black charcoal pigmentation creating bold contrast with crisp paper tooth texture.',
+      'Dramatic top-down directional lighting study defining hair volume and glasses reflection.',
+      'Exploration of modern urban youth identity through traditional fine art media.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'trad-blindfold-figure': {
+    number: '10',
+    title: 'BOUND PERCEPTION',
+    category: 'Traditional Art / Conceptual Graphite Study',
+    client: 'Conceptual Fine Art Series',
+    year: '2023 — 2026',
+    role: 'Traditional Fine Artist',
+    deliverables: 'Pencil on Paper, Fabric Drape & Fold Study, Conceptual Portraiture',
+    image: 'assets/images/traditional_blindfold_figure.jpg',
+    description:
+      'A poignant conceptual artwork of a blindfolded figure in an unbuttoned overcoat and chain necklace. Focuses heavily on the physics of cloth draping, lapel folds, and soft skin rendering around the jaw and neck.',
+    highlights: [
+      'Extensive study of fabric folds, shadows, and textile weight across the coat lapel.',
+      'Delicate shading using soft graphite grades and precision blending brushes.',
+      'Symbolic narrative exploring introspection, vulnerability, and modern stoicism.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'apparel-wasoy-mayon': {
+    number: '11',
+    title: 'WASOY: MAYON PEACE TEE',
+    category: 'Custom Apparel / Streetwear Graphic Tee',
+    client: 'Wasoy Concept Apparel 2025',
+    year: '2024 — 2026',
+    role: 'Apparel Graphic Designer & Typographer',
+    deliverables: 'Vector Print Separations, Direct-to-Film (DTF) Layout, Streetwear Lookbook Mockup',
+    image: 'assets/images/apparel_wasoy_mayon.jpg',
+    description:
+      'Clean, minimalist oversized streetwear tee concept featuring a picturesque brush-stroke vignette of Mount Mayon. Paired with bold serif branding and poignant typography: "Even the fire of Mayon can\'t silence a child\'s cry for peace."',
+    highlights: [
+      'Custom brush-edge watercolor vignette framing Mount Mayon and surrounding landscape.',
+      'Balanced editorial typography hierarchy suited for oversized boxy tee silhouettes.',
+      'Color-calibrated for direct-to-garment (DTG) and high-density screen print execution.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'apparel-zerotwo-jersey': {
+    number: '12',
+    title: 'ZERO TWO #02 SUBLIMATION JERSEY',
+    category: 'Custom Apparel / Sublimation Basketball Jersey',
+    client: 'Imprenta Quality Works',
+    year: '2024 — 2026',
+    role: 'Sportswear & Sublimation Designer',
+    deliverables: 'Full Sublimation Print Pattern, Vector Grading, Manga Collage Texture',
+    image: 'assets/images/apparel_zerotwo_jersey.jpg',
+    description:
+      'High-octane full-sublimation basketball jersey design inspired by Zero Two (Darling in the Franxx). Features a deep red monochromatic anime manga background collage, dynamic rib-cage cyber side trims, and high-visibility athletic squad numbering.',
+    highlights: [
+      'Seamless all-over print (AOP) full sublimation vector layout with collar and armhole trim matching.',
+      'Subtle red-and-black anime screentone composite integrated into the athletic mesh fabric.',
+      'Production-ready vector separations built to industry sportswear manufacturing standards.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'apparel-wasoy-sunflower': {
+    number: '13',
+    title: 'WASOY: ART SPEAKS OUT YOUNG TEE',
+    category: 'Custom Apparel / Typography Streetwear Tee',
+    client: 'Wasoy Concept Apparel 2025',
+    year: '2024 — 2026',
+    role: 'Streetwear Graphic Artist',
+    deliverables: 'Custom Vector Typography, Angel Motif, High-Contrast Screen Print Master',
+    image: 'assets/images/apparel_wasoy_sunflower.jpg',
+    description:
+      'A striking pitch-black streetwear oversized t-shirt design highlighting custom ornamental calligraphy and an intricate cherub angel emblem: "WHERE ART SPEAKS Out Young". Presented in a warm golden sunflower horizon campaign mockup.',
+    highlights: [
+      'Custom hybridized typography blending gothic all-caps letterforms with sweeping cursive script.',
+      'Intricate stippled cherub/angel line-art emblem vector designed for sharp screen printing.',
+      'Optimized for heavy cotton oversized streetwear fit with high-contrast plastisol ink printing.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'social-wendys-tumbler': {
+    number: '14',
+    title: "WENDY'S: 100TH STORE PROMO",
+    category: 'Social Media / Brand Promo Campaign',
+    client: "Wendy's Philippines (Friendship Highway)",
+    year: '2024 — 2026',
+    role: 'Social Media Graphic Artist',
+    deliverables: 'Promotional Ad Banner, Social Feed Creatives, Product Mockup Render',
+    image: 'assets/images/social_wendys_tumbler.jpg',
+    description:
+      "High-converting promotional social feed graphic for Wendy's 100th store milestone in Friendship Highway, Pampanga. Highlights the limited edition Wendy's baby-blue insulated tumbler on a clean display plinth with bold typography and corporate brand styling.",
+    highlights: [
+      'High-impact promotional headline typography designed for scroll-stopping engagement.',
+      'Realistic 3D tumbler product rendering with clean pedestal shadow integration.',
+      "Strict adherence to Wendy's international brand palette, logos, and promotional layout guidelines."
+    ],
+    liveDemoUrl: '#'
+  },
+  'social-imprenta-bigsale': {
+    number: '15',
+    title: 'IMPRENTA: MID-YEAR BIG SALE',
+    category: 'Social Media / Retail Marketing Campaign',
+    client: 'Imprenta Novaliches Printing Services',
+    year: '2024 — 2026',
+    role: 'Lead Marketing & Creative Designer',
+    deliverables: 'Multi-Product Collage, Coupon Creative, Social Promo Announcement',
+    image: 'assets/images/social_imprenta_bigsale.jpg',
+    description:
+      'An energetic, high-density marketing creative showcasing custom jerseys, tees, and riding apparel with a prominent 10% OFF discount coupon and textured team backdrop to drive customer inquiries and orders.',
+    highlights: [
+      'Layered multi-product showcase featuring custom jerseys, polo shirts, and riding long sleeves.',
+      'Prominent tear-off ticket coupon motif highlighting special bundle offers and freebies.',
+      'Bold typography contrast with textured crowd photo composite driving high campaign conversions.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'social-imprenta-samurai': {
+    number: '16',
+    title: 'IMPRENTA: SAMURAI RIDING SLEEVES',
+    category: 'Social Media / Apparel Product Launch',
+    client: 'Imprenta Novaliches Printing Services',
+    year: '2024 — 2026',
+    role: 'Visual Designer & Apparel Stylist',
+    deliverables: 'Product Launch Poster, Torn Paper Editorial Layout, Social Showcase',
+    image: 'assets/images/social_imprenta_samurai.jpg',
+    description:
+      'Fierce product launch ad for Imprenta Novaliches featuring the "Dominance Since 2022" Japanese Samurai warrior riding long sleeves. Employs a stylized torn paper transition over an ornate Japanese cloud pattern.',
+    highlights: [
+      'Dynamic split torn-paper graphic composition separating textured crimson background from product view.',
+      '3D realistic floating garment mockup with front-and-back artwork visibility.',
+      'Custom typography and Japanese flame & gold cloud ornament integration.'
+    ],
+    liveDemoUrl: '#'
+  },
+  'social-wendys-totebag': {
+    number: '17',
+    title: "WENDY'S: 2ND ANNIVERSARY TOTE BAG",
+    category: 'Social Media / Anniversary Event Promo',
+    client: "Wendy's Philippines (Tarlac Branch)",
+    year: '2024 — 2026',
+    role: 'Promotional Graphic Artist',
+    deliverables: 'Anniversary Campaign Ad, Merchandise Showcase, Social Poster',
+    image: 'assets/images/social_wendys_totebag.jpg',
+    description:
+      "Celebratory social media campaign poster commemorating the 2nd Anniversary of Wendy's Tarlac branch. Showcases the limited-edition canvas tote bag with custom cute burger, frosty, and Wendy mascots.",
+    highlights: [
+      'Dynamic radiant sunburst backdrop emphasizing the commemorative occasion.',
+      'Crisp product photography placement on a wooden cake plinth for a festive atmosphere.',
+      'Vibrant brand typography and clear promotional mechanics tailored for social engagement.'
     ],
     liveDemoUrl: '#'
   }
 };
 
-async function initProjectsAndModal() {
-  const grid = document.getElementById('projects-grid');
-
-  // Attempt to fetch live dynamic projects from backend API
-  try {
-    const res = await fetch('api/projects.php');
-    if (res.ok) {
-      const data = await res.json();
-      if (data.success && Array.isArray(data.projects) && data.projects.length > 0) {
-        projectData = {};
-        data.projects.forEach((p, idx) => {
-          const numStr = String(idx + 1).padStart(2, '0');
-          const idKey = String(p.id);
-          projectData[idKey] = {
-            id: p.id,
-            number: numStr,
-            title: p.title,
-            category: p.category,
-            categoryLabel: p.category_label || p.category,
-            client: p.client || 'Creative Client',
-            year: p.year || '2024 — 2026',
-            role: p.role || 'Artist',
-            deliverables: p.deliverables || 'Visual Artworks',
-            image: p.image,
-            description: p.description || '',
-            highlights: Array.isArray(p.highlights) ? p.highlights : [],
-            liveDemoUrl: p.live_demo_url || '#'
-          };
-        });
-      }
-    }
-  } catch (err) {
-    // Graceful offline fallback
-    console.info('Using local projects fallback data.');
-  }
-
-  // Render project cards into #projects-grid
-  if (grid) {
-    const projectKeys = Object.keys(projectData);
-    grid.innerHTML = projectKeys.map((key, idx) => {
-      const item = projectData[key];
-      const isExtra = idx >= 3 ? ' extra-project' : '';
-      const displayStyle = idx >= 3 ? 'display: none;' : '';
-      return `
-        <div class="project-card${isExtra}" data-category="${item.category}" data-project-id="${key}" style="${displayStyle}">
-          <div class="project-thumbnail-wrapper">
-            <img src="${item.image}" alt="${item.title}" class="project-thumbnail" onerror="this.src='assets/images/project_veloce.jpg'" />
-            <span class="project-badge-tag">${item.number} // ${item.category.toUpperCase()}</span>
-          </div>
-          <div class="project-card-footer">
-            <div class="project-info">
-              <div class="project-number">${item.number}</div>
-              <div class="project-meta">
-                <h3 class="project-title">${item.title}</h3>
-                <span class="project-category">${item.categoryLabel}</span>
-              </div>
-            </div>
-            <div class="project-arrow">→</div>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    // Re-attach hover sounds
-    if (typeof playSound === 'function') {
-      grid.querySelectorAll('.project-card').forEach((c) => {
-        c.addEventListener('mouseenter', () => playSound('hover'));
-      });
-    }
-  }
-
-  // Filter tabs logic
+function initProjectsAndModal() {
+  // Filter tabs & Project cards
   const filterTabs = document.querySelectorAll('.filter-tab');
   const projectCards = document.querySelectorAll('.project-card');
-  const toggleAllBtn = document.getElementById('toggle-all-projects');
-  const viewAllText = document.getElementById('view-all-text');
+
+  // Load More Button
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreWrap = document.getElementById('load-more-wrap');
+
+  // Dynamically load site settings (Hero text, stats counters, etc.)
+  loadDynamicSettings();
   let isAllExpanded = false;
+  let currentFilter = 'all';
 
-  if (toggleAllBtn) {
-    toggleAllBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      playSound('click');
-      isAllExpanded = !isAllExpanded;
-      const extraProjects = document.querySelectorAll('.extra-project');
-
-      extraProjects.forEach((card) => {
-        if (isAllExpanded) {
-          card.style.display = 'flex';
-          setTimeout(() => (card.style.opacity = '1'), 50);
-        } else {
-          card.style.opacity = '0';
-          setTimeout(() => (card.style.display = 'none'), 200);
-        }
-      });
-
-      if (viewAllText) {
-        viewAllText.textContent = isAllExpanded ? 'Show Top 3 Only' : 'View All Projects';
+  function renderProjects() {
+    // 1. Gather all project cards matching current category filter
+    const matchingCards = [];
+    projectCards.forEach((card) => {
+      const cat = card.getAttribute('data-category');
+      if (currentFilter === 'all' || cat === currentFilter) {
+        matchingCards.push(card);
+      } else {
+        card.style.opacity = '0';
+        card.style.display = 'none';
       }
+    });
+
+    const totalMatching = matchingCards.length;
+    const hasMore = totalMatching > 3;
+    const extraCount = totalMatching - 3;
+
+    // 2. Control visibility (top 3 by default or all if expanded)
+    matchingCards.forEach((card, index) => {
+      if (index < 3 || isAllExpanded) {
+        card.style.display = 'flex';
+        setTimeout(() => (card.style.opacity = '1'), 30);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => (card.style.display = 'none'), 150);
+      }
+    });
+
+    // 3. Show or hide Load More button based on whether there are > 3 projects in this category
+    if (hasMore) {
+      if (loadMoreWrap) loadMoreWrap.style.display = 'flex';
+
+      if (loadMoreBtn) {
+        const btnText = loadMoreBtn.querySelector('.btn-text');
+        if (isAllExpanded) {
+          loadMoreBtn.classList.add('expanded');
+          if (btnText) btnText.textContent = 'Show Top 3 Only';
+        } else {
+          loadMoreBtn.classList.remove('expanded');
+          if (btnText) btnText.textContent = `See More Works (${extraCount})`;
+        }
+      }
+    } else {
+      // 3 or fewer projects: hide the "See More" button
+      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+    }
+  }
+
+  // Initial Render on page load
+  renderProjects();
+
+  function toggleExpand() {
+    playSound('click');
+    isAllExpanded = !isAllExpanded;
+    renderProjects();
+  }
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleExpand();
     });
   }
 
@@ -443,26 +703,9 @@ async function initProjectsAndModal() {
       filterTabs.forEach((t) => t.classList.remove('active'));
       tab.classList.add('active');
 
-      const filter = tab.getAttribute('data-filter');
-      projectCards.forEach((card) => {
-        const cat = card.getAttribute('data-category');
-        const isExtra = card.classList.contains('extra-project');
-
-        if (filter === 'all') {
-          if (!isExtra || isAllExpanded) {
-            card.style.display = 'flex';
-            setTimeout(() => (card.style.opacity = '1'), 50);
-          } else {
-            card.style.display = 'none';
-          }
-        } else if (cat === filter) {
-          card.style.display = 'flex';
-          setTimeout(() => (card.style.opacity = '1'), 50);
-        } else {
-          card.style.opacity = '0';
-          setTimeout(() => (card.style.display = 'none'), 200);
-        }
-      });
+      currentFilter = tab.getAttribute('data-filter') || 'all';
+      isAllExpanded = false; // Reset to top 3 view on tab change
+      renderProjects();
     });
   });
 
@@ -586,8 +829,8 @@ async function loadDynamicSettings() {
    6. CONTACT SYSTEM & CLIPBOARD
    ========================================================================== */
 function initContactSystem() {
-  // Copy to clipboard cards
-  const copyCards = document.querySelectorAll('.contact-method-card');
+  // Copy to clipboard cards (for elements with data-copy)
+  const copyCards = document.querySelectorAll('.contact-method-card[data-copy]');
   copyCards.forEach((card) => {
     card.addEventListener('click', (e) => {
       const copyVal = card.getAttribute('data-copy');

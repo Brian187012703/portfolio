@@ -85,13 +85,6 @@
             cutting-edge digital craftsmanship.
           </p>
 
-          <div class="hero-worldwide-badge">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span>Quezon City, Philippines</span>
-          </div>
 
           <div class="hero-cta-group">
             <a href="#projects" class="btn-primary">
@@ -158,15 +151,324 @@
           <button class="filter-tab" data-filter="digital">Digital Arts</button>
           <button class="filter-tab" data-filter="traditional">Traditional Arts</button>
         </div>
-
-        <a href="#projects" id="toggle-all-projects" class="view-all-link">
-          <span id="view-all-text">View All Projects</span>
-          <span style="font-size: 1.1rem;">→</span>
-        </a>
       </div>
 
       <div class="projects-grid" id="projects-grid">
-        <!-- Blank / Ready for your incoming artwork pictures -->
+        <!-- Project 1: NBA Next -->
+        <div class="project-card" data-category="digital" data-project-id="nba-next">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/digital_nba_next.jpg" alt="NBA Rookie: Who's Gonna Be Next?" class="project-thumbnail" />
+            <span class="project-badge-tag">Digital Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">01</span>
+              <div class="project-meta">
+                <h4 class="project-title">Who's Gonna Be Next?</h4>
+                <span class="project-category">Sports Concept Poster</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Alex Eala -->
+        <div class="project-card" data-category="digital" data-project-id="alex-eala">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/digital_alex_eala.jpg" alt="Alex Eala: The Face of the Philippines" class="project-thumbnail" />
+            <span class="project-badge-tag">Digital Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">02</span>
+              <div class="project-meta">
+                <h4 class="project-title">Alex Eala — PH Pride</h4>
+                <span class="project-category">Cultural Sports Tribute</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Post Malone -->
+        <div class="project-card" data-category="digital" data-project-id="post-malone">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/digital_post_malone.jpg" alt="Post Malone: Austin Post Tribute" class="project-thumbnail" />
+            <span class="project-badge-tag">Digital Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">03</span>
+              <div class="project-meta">
+                <h4 class="project-title">Post Malone Montage</h4>
+                <span class="project-category">Music Concert Composite</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Lewis Hamilton -->
+        <div class="project-card extra-project" data-category="digital" data-project-id="lewis-hamilton">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/digital_lewis_hamilton.jpg" alt="Lewis Hamilton: Formula 1 Champion" class="project-thumbnail" />
+            <span class="project-badge-tag">Digital Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">04</span>
+              <div class="project-meta">
+                <h4 class="project-title">Lewis Hamilton F1</h4>
+                <span class="project-category">Motorsport Artwork</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 5: Brigida & Friends -->
+        <div class="project-card extra-project" data-category="digital" data-project-id="brigida-friends">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/digital_brigida_minions.jpg" alt="Brigida and Friends: Meadow Adventure" class="project-thumbnail" />
+            <span class="project-badge-tag">Digital Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">05</span>
+              <div class="project-meta">
+                <h4 class="project-title">Brigida & Friends</h4>
+                <span class="project-category">3D Photo Composite</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 6: Lily in Bloom -->
+        <div class="project-card" data-category="traditional" data-project-id="trad-lily-portrait">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/traditional_lily_portrait.jpg" alt="Lily in Bloom — Graphite Portrait" class="project-thumbnail" />
+            <span class="project-badge-tag">Traditional Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">06</span>
+              <div class="project-meta">
+                <h4 class="project-title">Lily in Bloom</h4>
+                <span class="project-category">Graphite & Pencil Portrait</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 7: Realism Portrait Study -->
+        <div class="project-card" data-category="traditional" data-project-id="trad-female-study">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/traditional_female_study.jpg" alt="Realism Portrait Study — Charcoal Drawing" class="project-thumbnail" />
+            <span class="project-badge-tag">Traditional Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">07</span>
+              <div class="project-meta">
+                <h4 class="project-title">Realism Study</h4>
+                <span class="project-category">Charcoal & Graphite Drawing</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 8: Air Jordan 1 High -->
+        <div class="project-card" data-category="traditional" data-project-id="trad-jordan-sneaker">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/traditional_jordan_sneaker.jpg" alt="Air Jordan 1 High Retro — Sneaker Illustration" class="project-thumbnail" />
+            <span class="project-badge-tag">Traditional Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">08</span>
+              <div class="project-meta">
+                <h4 class="project-title">Air Jordan 1 High</h4>
+                <span class="project-category">Sneaker & Product Illustration</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 9: Silhouette & Shadow -->
+        <div class="project-card" data-category="traditional" data-project-id="trad-masked-portrait">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/traditional_masked_portrait.jpg" alt="Silhouette & Shadow — Charcoal Portrait" class="project-thumbnail" />
+            <span class="project-badge-tag">Traditional Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">09</span>
+              <div class="project-meta">
+                <h4 class="project-title">Silhouette & Shadow</h4>
+                <span class="project-category">Charcoal Shading Study</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 10: Bound Perception -->
+        <div class="project-card" data-category="traditional" data-project-id="trad-blindfold-figure">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/traditional_blindfold_figure.jpg" alt="Bound Perception — Conceptual Graphite Study" class="project-thumbnail" />
+            <span class="project-badge-tag">Traditional Art</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">10</span>
+              <div class="project-meta">
+                <h4 class="project-title">Bound Perception</h4>
+                <span class="project-category">Conceptual Graphite Study</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 11: Wasoy Mayon Tee -->
+        <div class="project-card" data-category="apparel" data-project-id="apparel-wasoy-mayon">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/apparel_wasoy_mayon.jpg" alt="Wasoy Mayon Peace Streetwear Tee" class="project-thumbnail" />
+            <span class="project-badge-tag">Apparel</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">11</span>
+              <div class="project-meta">
+                <h4 class="project-title">Wasoy Mayon Tee</h4>
+                <span class="project-category">Streetwear Graphic Tee</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 12: Zero Two Jersey -->
+        <div class="project-card" data-category="apparel" data-project-id="apparel-zerotwo-jersey">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/apparel_zerotwo_jersey.jpg" alt="Zero Two 02 Sublimation Jersey" class="project-thumbnail" />
+            <span class="project-badge-tag">Apparel</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">12</span>
+              <div class="project-meta">
+                <h4 class="project-title">Zero Two #02</h4>
+                <span class="project-category">Sublimation Jersey</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 13: Wasoy Art Speaks Out Young Tee -->
+        <div class="project-card" data-category="apparel" data-project-id="apparel-wasoy-sunflower">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/apparel_wasoy_sunflower.jpg" alt="Wasoy Art Speaks Out Young Typography Tee" class="project-thumbnail" />
+            <span class="project-badge-tag">Apparel</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">13</span>
+              <div class="project-meta">
+                <h4 class="project-title">Art Speaks Out Young</h4>
+                <span class="project-category">Typography Streetwear Tee</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 14: Wendy's Tumbler Promo -->
+        <div class="project-card" data-category="social" data-project-id="social-wendys-tumbler">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/social_wendys_tumbler.jpg" alt="Wendy's 100th Store Free Tumbler Promo" class="project-thumbnail" />
+            <span class="project-badge-tag">Social Media</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">14</span>
+              <div class="project-meta">
+                <h4 class="project-title">Wendy's Tumbler Promo</h4>
+                <span class="project-category">Brand Promotional Campaign</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 15: Imprenta Big Sale -->
+        <div class="project-card" data-category="social" data-project-id="social-imprenta-bigsale">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/social_imprenta_bigsale.jpg" alt="Imprenta Novaliches Mid-Year Big Sale Promo" class="project-thumbnail" />
+            <span class="project-badge-tag">Social Media</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">15</span>
+              <div class="project-meta">
+                <h4 class="project-title">Imprenta Big Sale</h4>
+                <span class="project-category">Retail Marketing Campaign</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 16: Imprenta Samurai Long Sleeves -->
+        <div class="project-card" data-category="social" data-project-id="social-imprenta-samurai">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/social_imprenta_samurai.jpg" alt="Imprenta Samurai Riding Long Sleeves Launch" class="project-thumbnail" />
+            <span class="project-badge-tag">Social Media</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">16</span>
+              <div class="project-meta">
+                <h4 class="project-title">Samurai Riding Sleeves</h4>
+                <span class="project-category">Apparel Product Launch</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- Project 17: Wendy's Tote Bag Promo -->
+        <div class="project-card" data-category="social" data-project-id="social-wendys-totebag">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/social_wendys_totebag.jpg" alt="Wendy's Tarlac 2nd Anniversary Free Tote Bag Promo" class="project-thumbnail" />
+            <span class="project-badge-tag">Social Media</span>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-info">
+              <span class="project-number">17</span>
+              <div class="project-meta">
+                <h4 class="project-title">Wendy's Tote Bag Promo</h4>
+                <span class="project-category">Anniversary Event Promo</span>
+              </div>
+            </div>
+            <span class="project-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load More / See More Button -->
+      <div class="load-more-container" id="load-more-wrap">
+        <button id="load-more-btn" class="btn-load-more" type="button">
+          <span class="btn-text">See More Works (2)</span>
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -315,8 +617,7 @@
         <div class="contact-right">
           <div class="contact-methods-list">
             <!-- Email -->
-            <div class="contact-method-card" data-copy="Briantanael187@gmail.com" data-label="Email"
-              title="Click to copy email">
+            <a href="mailto:Briantanael187@gmail.com" class="contact-method-card" title="Open in Email App">
               <div class="method-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -327,12 +628,11 @@
                 <span class="method-label">Direct Email</span>
                 <span class="method-value">Briantanael187@gmail.com</span>
               </div>
-              <span class="copy-badge">Copy</span>
-            </div>
+              <span class="copy-badge">Email</span>
+            </a>
 
-            <!-- Phone / WhatsApp -->
-            <div class="contact-method-card" data-copy="+63 906 507 0059" data-label="Phone Number"
-              title="Click to copy phone">
+            <!-- Phone / Mobile -->
+            <a href="tel:+639065070059" class="contact-method-card" title="Open in Phone App">
               <div class="method-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path
@@ -344,8 +644,8 @@
                 <span class="method-label">Direct Contact / Phone</span>
                 <span class="method-value">+63 906 507 0059</span>
               </div>
-              <span class="copy-badge">Copy</span>
-            </div>
+              <span class="copy-badge">Call</span>
+            </a>
 
             <!-- Location (Static Info, No Copy) -->
             <div class="contact-method-card static-info">

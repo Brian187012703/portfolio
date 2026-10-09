@@ -715,6 +715,7 @@ body {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .filter-tab {
@@ -746,38 +747,12 @@ body {
   box-shadow: 0 0 14px var(--accent-subtle-glow);
 }
 
-.view-all-link {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-family: var(--font-tech);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.02);
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.view-all-link:hover {
-  color: #ffffff;
-  border-color: var(--accent-red);
-  background: rgba(255, 30, 45, 0.12);
-  box-shadow: 0 0 12px var(--accent-subtle-glow);
-  transform: translateX(3px);
-}
-
-/* Projects Grid */
+/* Projects Flex Container */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 28px;
+  justify-content: center;
 }
 
 .project-card {
@@ -790,6 +765,9 @@ body {
   transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  flex: 0 1 calc(33.333% - 20px);
+  min-width: 290px;
+  max-width: 380px;
 }
 
 .project-card:hover {
@@ -801,22 +779,21 @@ body {
 .project-thumbnail-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 3/4;
   overflow: hidden;
-  background: #020202;
+  background: #08080a;
 }
 
 .project-thumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
-  filter: grayscale(15%) contrast(1.05);
 }
 
 .project-card:hover .project-thumbnail {
-  transform: scale(1.06);
-  filter: grayscale(0%) contrast(1.15);
+  transform: scale(1.05);
 }
 
 .project-badge-tag {
@@ -974,9 +951,59 @@ body {
   transition: all var(--transition-fast);
 }
 
-.project-card:hover .project-arrow {
+.project-card.extra-project {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-smooth);
+}
+
+/* Load More / See More Button */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.btn-load-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-red);
+  color: var(--text-primary);
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-load-more:hover {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 0 25px var(--accent-neon-glow);
+  transform: translateY(-3px);
+}
+
+.btn-load-more .btn-icon {
   color: var(--accent-red);
-  transform: translateX(6px);
+  transition: transform 0.3s ease, color var(--transition-fast);
+}
+
+.btn-load-more:hover .btn-icon {
+  color: #ffffff;
+}
+
+.btn-load-more.expanded .btn-icon {
+  transform: rotate(180deg);
 }
 
 /* ==========================================================================
@@ -1323,6 +1350,7 @@ body {
   transition: all var(--transition-fast);
   cursor: pointer;
   text-decoration: none;
+  color: inherit;
 }
 
 .contact-method-card:hover {
@@ -1586,14 +1614,22 @@ body {
 
 .modal-image-preview {
   width: 100%;
+  max-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border-medium);
 }
 
 .modal-image-preview img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
   height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -1928,12 +1964,6 @@ textarea.form-control {
     font-size: 0.72rem;
   }
 
-  .view-all-link {
-    align-self: flex-start;
-    font-size: 0.74rem;
-    padding: 7px 15px;
-  }
-
   .three-column-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -1948,6 +1978,12 @@ textarea.form-control {
     gap: 32px;
   }
 
+  .project-card {
+    flex: 0 1 calc(50% - 14px);
+    min-width: 240px;
+    max-width: 100%;
+  }
+
   .modal-meta-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1955,6 +1991,15 @@ textarea.form-control {
 
 /* Small Smartphone Devices (<= 480px) */
 @media (max-width: 480px) {
+  .projects-grid {
+    gap: 20px;
+  }
+
+  .project-card {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
   .main-wrapper {
     padding: 0 16px;
   }
