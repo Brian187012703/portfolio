@@ -19,7 +19,7 @@ if not exist .git (
 
 echo Staging all updated files...
 git add .
-git commit -m "Fix button functionality, resolve git conflicts, and implement full multi-device responsiveness"
+git commit -m "Fix button functionality, resolve git conflicts, and implement full multi-device responsiveness" 2>nul
 
 echo.
 echo Setting remote origin to: https://github.com/Brian187012703/%REPO_NAME%.git
